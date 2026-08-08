@@ -158,34 +158,38 @@ export default function Projects() {
               </div>
 
               <div className="flex flex-1 flex-col p-6 sm:p-7">
-                <h3 className="text-xl font-semibold text-white">
-                  {project.name}
-                </h3>
+                {/* This wrapper absorbs the leftover vertical space, so the button
+                    below always keeps a fixed gap instead of hugging the tags */}
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-white">
+                    {project.name}
+                  </h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-slate-300">
-                  {project.description}
-                </p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                    {project.description}
+                  </p>
 
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {project.stack.map(({ name, icon: Icon }) => (
-                    <div
-                      key={name}
-                      className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/3 px-3 py-1.5"
-                    >
-                      <Icon size={13} className="text-slate-400" />
-                      <span className="text-xs font-medium text-slate-300">
-                        {name}
-                      </span>
-                    </div>
-                  ))}
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.stack.map(({ name, icon: Icon }) => (
+                      <div
+                        key={name}
+                        className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/3 px-3 py-1.5"
+                      >
+                        <Icon size={13} className="text-slate-400" />
+                        <span className="text-xs font-medium text-slate-300">
+                          {name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                {/* mt-auto pins this to the bottom of the card, so it's always level across the row */}
+                {/* Always-consistent gap above the button */}
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-auto pt-6 flex items-center justify-center gap-2 rounded-xl border border-blue-400/30 bg-blue-500/10 px-4 py-3 text-sm font-semibold text-blue-300 transition-colors duration-300 hover:border-blue-400/50 hover:bg-blue-500/20 hover:text-blue-200"
+                  className="mt-6 flex items-center justify-center gap-2 rounded-xl border border-blue-400/30 bg-blue-500/10 px-4 py-3 text-sm font-semibold text-blue-300 transition-colors duration-300 hover:border-blue-400/50 hover:bg-blue-500/20 hover:text-blue-200"
                 >
                   View Live Project
                   <ExternalLink size={14} />
