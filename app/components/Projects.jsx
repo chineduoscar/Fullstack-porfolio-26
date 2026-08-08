@@ -1,6 +1,7 @@
 "use client";
 
 import { ExternalLink, CreditCard } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   SiNextdotjs,
   SiExpress,
@@ -111,6 +112,25 @@ const PROJECTS = [
 
 const GITHUB_URL = "https://github.com/Chineduoscar";
 
+// Animation variants
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 export default function Projects() {
   return (
     <section
@@ -129,15 +149,21 @@ export default function Projects() {
         </div>
 
         {/* ---- Project Grid ---- */}
-        <div className="grid gap-6 sm:grid-cols-2 mt-12">
+        <motion.div
+          className="grid gap-6 sm:grid-cols-2 mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
           {PROJECTS.map((project) => (
-            <div
+            <motion.div
               key={project.name}
+              variants={cardVariants}
               className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#121620] transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/30"
             >
               <div className="absolute -inset-px -z-10 rounded-3xl bg-blue-500/0 blur-2xl transition-all duration-300 group-hover:bg-blue-500/5" />
 
-              {/* Image with quick-access live link overlay */}
               <div className="relative">
                 <Image
                   width={200}
@@ -158,8 +184,6 @@ export default function Projects() {
               </div>
 
               <div className="flex flex-1 flex-col p-6 sm:p-7">
-                {/* This wrapper absorbs the leftover vertical space, so the button
-                    below always keeps a fixed gap instead of hugging the tags */}
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-white">
                     {project.name}
@@ -184,7 +208,6 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Always-consistent gap above the button */}
                 <a
                   href={project.liveUrl}
                   target="_blank"
@@ -195,9 +218,9 @@ export default function Projects() {
                   <ExternalLink size={14} />
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* ---- See more ---- */}
         <div className="mt-14 flex justify-center">
