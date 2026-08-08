@@ -59,7 +59,7 @@ export default function AboutAndStack() {
   return (
     <section
       id="about"
-      className="relative w-full overflow-hidden bg-[#0a0c10] px-4 py-20 sm:px-6 sm:py-28"
+      className="relative w-full overflow-hidden bg-[#0a0c10] px-4 py-12 sm:px-6 sm:py-20"
     >
       {/* Ambient blue glow tying the whole section together */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-150 w-225 -translate-x-1/2 rounded-full bg-blue-600/5 blur-[120px]" />
