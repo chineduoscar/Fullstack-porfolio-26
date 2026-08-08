@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Experience", href: "/experience" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/", type: "route" },
+  { label: "About", href: "#about", type: "hash" },
+  { label: "Projects", href: "#project", type: "hash" },
+  { label: "Contact", href: "#contact", type: "hash" },
 ];
 
 function Logo() {
@@ -30,8 +30,9 @@ function Logo() {
 function ResumeDownload({ className = "" }) {
   return (
     <a
-      href="/resume.pdf"
-      download
+      href="https://drive.google.com/file/d/1G8Obvem3z0abaZ9Pz7jB7VgJnVCrLAe6/view?usp=drive_link"
+      target="_blank"
+      rel="noopener noreferrer"
       className={`flex items-center gap-2 rounded-full border border-white/10 bg-white/2 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/6 ${className}`}
     >
       Resume
@@ -61,6 +62,32 @@ function ResumeDownload({ className = "" }) {
   );
 }
 
+function NavLink({ link, isActive, showDivider, onClick, mobile = false }) {
+  const className = mobile
+    ? isActive
+      ? "rounded-xl border border-blue-400/40 bg-blue-500/15 px-4 py-3 text-sm font-medium text-white"
+      : "rounded-xl px-4 py-3 text-sm font-medium text-slate-300 hover:bg-white/3 hover:text-white"
+    : isActive
+      ? "rounded-full border border-blue-400/40 bg-blue-500/15 px-5 py-2 text-sm font-medium text-white transition-colors"
+      : `px-5 py-2 text-sm font-medium text-slate-300 transition-colors hover:text-white ${
+          showDivider ? "border-l border-white/10" : ""
+        }`;
+
+  if (link.type === "route") {
+    return (
+      <Link href={link.href} onClick={onClick} className={className}>
+        {link.label}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={link.href} onClick={onClick} className={className}>
+      {link.label}
+    </a>
+  );
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -73,22 +100,15 @@ export default function Header() {
         {/* Desktop nav — centered */}
         <nav className="hidden items-center justify-self-center gap-4 rounded-full border border-white/10 bg-white/2 p-2 md:flex">
           {NAV_LINKS.map((link, index) => {
-            const isActive = pathname === link.href;
+            const isActive = link.type === "route" && pathname === link.href;
             const showDivider = index !== 0 && !isActive;
             return (
-              <Link
+              <NavLink
                 key={link.href}
-                href={link.href}
-                className={
-                  isActive
-                    ? "rounded-full border border-blue-400/40 bg-blue-500/15 px-5 py-2 text-sm font-medium text-white transition-colors"
-                    : `px-5 py-2 text-sm font-medium text-slate-300 transition-colors hover:text-white ${
-                        showDivider ? "border-l border-white/10" : ""
-                      }`
-                }
-              >
-                {link.label}
-              </Link>
+                link={link}
+                isActive={isActive}
+                showDivider={showDivider}
+              />
             );
           })}
         </nav>
@@ -146,20 +166,15 @@ export default function Header() {
       >
         <nav className="flex flex-col gap-1 px-4 pb-5">
           {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = link.type === "route" && pathname === link.href;
             return (
-              <Link
+              <NavLink
                 key={link.href}
-                href={link.href}
+                link={link}
+                isActive={isActive}
                 onClick={() => setIsOpen(false)}
-                className={
-                  isActive
-                    ? "rounded-xl border border-blue-400/40 bg-blue-500/15 px-4 py-3 text-sm font-medium text-white"
-                    : "rounded-xl px-4 py-3 text-sm font-medium text-slate-300 hover:bg-white/3 hover:text-white"
-                }
-              >
-                {link.label}
-              </Link>
+                mobile
+              />
             );
           })}
           <ResumeDownload className="mt-2 justify-center" />

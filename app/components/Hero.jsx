@@ -214,8 +214,8 @@ export default function Hero() {
 
         {/* ---- CTA pill ---- */}
         <div className="mx-auto mt-3 flex w-fit items-center gap-1 rounded-full border border-white/10 bg-[#121620]/80 p-1.5 shadow-xl backdrop-blur-md sm:mt-4">
-          <Link
-            href="/projects"
+          <a
+            href="#project"
             className="flex items-center gap-1.5 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
           >
             Projects
@@ -234,13 +234,13 @@ export default function Hero() {
                 strokeLinejoin="round"
               />
             </svg>
-          </Link>
-          <Link
-            href="/contact"
+          </a>
+          <a
+            href="#contact"
             className="rounded-full px-5 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:text-white"
           >
             Hire me
-          </Link>
+          </a>
         </div>
 
         {/* ---- Mobile-only quote/stat, stacked since the side blocks hide below lg ---- */}
