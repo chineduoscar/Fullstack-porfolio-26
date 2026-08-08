@@ -137,30 +137,29 @@ export default function Projects() {
             >
               <div className="absolute -inset-px -z-10 rounded-3xl bg-blue-500/0 blur-2xl transition-all duration-300 group-hover:bg-blue-500/5" />
 
-              {/* Image with quick-access live link overlay */}
-              <div className="relative">
-                <Image
-                  width={200}
-                  height={200}
-                  src={project.image}
-                  alt={project.name}
-                  className="h-44 w-full object-cover"
-                />
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open ${project.name} live site`}
-                  className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-blue-500/80"
-                >
-                  <ExternalLink size={15} />
-                </a>
-              </div>
+              <Image
+                width={200}
+                height={200}
+                src={project.image}
+                alt={project.name}
+                className="h-44 w-full object-cover"
+              />
 
               <div className="flex flex-1 flex-col p-6 sm:p-7">
-                <h3 className="text-xl font-semibold text-white">
-                  {project.name}
-                </h3>
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-xl font-semibold text-white">
+                    {project.name}
+                  </h3>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden shrink-0 items-center gap-1.5 rounded-full border border-blue-400/20 bg-blue-500/5 px-3.5 py-1.5 text-xs font-medium text-blue-300 transition-colors duration-300 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-blue-200 sm:flex"
+                  >
+                    View Live
+                    <ExternalLink size={12} />
+                  </a>
+                </div>
 
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">
                   {project.description}
@@ -180,12 +179,12 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Prominent, full-width live link — sits at the bottom, easy to tap on mobile */}
+                {/* Mobile-only full-width button — hidden from sm breakpoint up */}
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 flex items-center justify-center gap-2 rounded-xl border border-blue-400/30 bg-blue-500/10 px-4 py-3 text-sm font-semibold text-blue-300 transition-colors duration-300 hover:border-blue-400/50 hover:bg-blue-500/20 hover:text-blue-200"
+                  className="mt-6 flex items-center justify-center gap-2 rounded-xl border border-blue-400/30 bg-blue-500/10 px-4 py-3 text-sm font-semibold text-blue-300 transition-colors duration-300 hover:border-blue-400/50 hover:bg-blue-500/20 hover:text-blue-200 sm:hidden"
                 >
                   View Live Project
                   <ExternalLink size={14} />
