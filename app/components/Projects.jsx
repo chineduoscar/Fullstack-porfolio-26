@@ -137,7 +137,6 @@ export default function Projects() {
             >
               <div className="absolute -inset-px -z-10 rounded-3xl bg-blue-500/0 blur-2xl transition-all duration-300 group-hover:bg-blue-500/5" />
 
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <Image
                 width={200}
                 height={200}
