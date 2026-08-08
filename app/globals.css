@@ -24,3 +24,28 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom scrollbar - Webkit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0c10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6; /* blue-500, matches your accent color */
+  border-radius: 9999px;
+  border: 2px solid #0a0c10; /* creates a padding effect around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #60a5fa; /* blue-400, lighter on hover */
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #0a0c10;
+}
