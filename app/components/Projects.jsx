@@ -37,7 +37,7 @@ const PROJECTS = [
       { name: "Paystack", icon: CreditCard },
       { name: "Netlify", icon: SiNetlify },
     ],
-    liveUrl: "https://sotrackdriving.netlify.app/",
+    liveUrl: "https://sotrackdrivingschool.com/",
   },
   {
     name: "CashConnect",

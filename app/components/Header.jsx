@@ -30,7 +30,7 @@ function Logo() {
 function ResumeDownload({ className = "" }) {
   return (
     <a
-      href="https://drive.google.com/file/d/1G8Obvem3z0abaZ9Pz7jB7VgJnVCrLAe6/view?usp=drive_link"
+      href="https://drive.google.com/file/d/1m7YdDjumK3OCBCFVoM-vWqGvOu2mxoSQ/view?usp=sharing"
       target="_blank"
       rel="noopener noreferrer"
       className={`flex items-center gap-2 rounded-full border border-white/10 bg-white/2 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/6 ${className}`}
